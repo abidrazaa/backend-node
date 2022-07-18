@@ -1,0 +1,22 @@
+{
+  "name": "backend-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abidrazaa/backend-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abidrazaa/backend-node/issues"
+  },
+  "homepage": "https://github.com/abidrazaa/backend-node#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
