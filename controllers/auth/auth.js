@@ -32,7 +32,7 @@ module.exports.register = async (req, res) => {
         const {email, password} = req.body;
 
         if(!email || !password){
-            return res.json({success : false, message : "name or password is empty"})
+            return res.json({success : false, message : "email or password is empty"})
         }
     
         let user = new userModel(req.body)
