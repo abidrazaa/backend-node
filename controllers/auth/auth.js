@@ -1,10 +1,11 @@
 const userModel = require("../../models/user")
+const bcrypt = require("bcrypt")
 
 module.exports.login = async (req, res) => {
 
     try{
         const { email, password } = req.body;
-        let user = await userModel.findOne({email, password})
+        let user = await userModel.findOne({email})
 
         if(!user){
             return res.json({
@@ -13,11 +14,16 @@ module.exports.login = async (req, res) => {
             })
         }
 
-        return res.json({
-            success : true,
-            message : "user Logged in",
-            data : user
-        })
+        // bcrypting the password and comparing with the one in db
+        if(await bcrypt.compare(password, user.password)){
+            return res.json({
+                success : true,
+                message : "user Logged in",
+                data : user
+            })
+        }
+
+        
 
     }catch(error){
         return res.send("error : ", error.message)
@@ -34,10 +40,11 @@ module.exports.register = async (req, res) => {
         if(!email || !password){
             return res.json({success : false, message : "email or password is empty"})
         }
+        req.body.password = await bcrypt.hash(password,10)
     
         let user = new userModel(req.body)
         await user.save()
-    
+
         return res.json(
             {
                 success : true, 
@@ -47,7 +54,7 @@ module.exports.register = async (req, res) => {
         )
 
     }catch(error){
-        return res.send("error : ", error.message)
+        return res.send(error.message)
     }
     
 }
