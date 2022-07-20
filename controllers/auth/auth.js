@@ -23,8 +23,6 @@ module.exports.login = async (req, res) => {
             })
         }
 
-        
-
     }catch(error){
         return res.send("error : ", error.message)
     }
@@ -120,4 +118,36 @@ module.exports.userById = async (req, res) => {
     }catch(error){
         return res.send("error : ", error.message)
     }
+}
+
+module.exports.resetPassword = async (req, res) => {
+
+    try{
+        const {password, newPassword} = req.body;
+        const {id} = req.query
+    
+        if(!password || !newPassword || id) return res.send("Fields are empty")
+    
+        let user = await userModel.findOne({_id : id})
+    
+        if(!user) return res.send("user does not exist")
+    
+        if(bcrypt.compare(password, user?.password)){
+            user.password = bcrypt.hash(newPassword,10)
+            user.save()
+            return res.json({
+                success : true,
+                message : "password updated successfully"
+            })
+        }
+        
+        return res.json({
+            success : false,
+            message : "wrong password"
+        })
+
+    }catch(error){
+        return res.send("error : ", error.message)
+    }
+    
 }
