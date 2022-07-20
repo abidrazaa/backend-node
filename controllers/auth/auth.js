@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 module.exports.login = async (req, res) => {
   try {
+
     const { email, password } = req.body;
     let user = await userModel.findOne({ email });
 
@@ -23,6 +24,12 @@ module.exports.login = async (req, res) => {
         data: user,
       });
     }
+    return res.json({
+        success: false,
+        status: 1,
+        message: "user credentials are not correct",
+    })
+
   } catch (error) {
     return res.send("error : ", error.message);
   }
@@ -120,22 +127,25 @@ module.exports.resetPassword = async (req, res) => {
     try{
         const {password, newPassword} = req.body;
         const {id} = req.query
+
+        console.log(req.body)
+        console.log(req.query)
     
-        if(!password || !newPassword || id) return res.send("Fields are empty")
+        if(!password || !newPassword || !id) return res.send("Fields are empty")
     
         let user = await userModel.findOne({_id : id})
     
         if(!user) return res.send("user does not exist")
     
         if(bcrypt.compare(password, user?.password)){
-            user.password = bcrypt.hash(newPassword,10)
+            user.password = await bcrypt.hash(newPassword,10)
             user.save()
             return res.json({
                 success : true,
                 message : "password updated successfully"
             })
         }
-        
+
         return res.json({
             success : false,
             message : "wrong password"
