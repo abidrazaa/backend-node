@@ -1,10 +1,16 @@
 const express = require('express')
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 var bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json())
 
+// Set up Global configuration access
+dotenv.config();
 
 const { register, login, updateUser, deleteUser, userById, resetPassword } = require("./controllers/auth/auth");
  
@@ -25,7 +31,6 @@ app.get("/delete-user", deleteUser)
 app.post("/reset-password", resetPassword)
 
 
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`)
+app.listen((process.env.PORT || 8081), () => {
+  console.log(`Example app listening on port ${process.env.PORT}!`)
 });

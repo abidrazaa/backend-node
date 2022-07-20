@@ -1,5 +1,12 @@
 const userModel = require("../../models/user");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
+const JWT_SECRET_KEY = process.env.TOKEN_KEY
+
+function generateAuthToken(data){
+  const token = jwt.sign(data, JWT_SECRET_KEY, { expiresIn: '10h' })
+  return token
+}
 
 module.exports.login = async (req, res) => {
   try {
@@ -17,6 +24,11 @@ module.exports.login = async (req, res) => {
 
     // bcrypting the password and comparing with the one in db
     if (await bcrypt.compare(password, user.password)) {
+
+      const token = generateAuthToken({email : email})
+      user.token = token
+      user.save()
+
       return res.json({
         success: true,
         status: 1,
@@ -31,7 +43,7 @@ module.exports.login = async (req, res) => {
     })
 
   } catch (error) {
-    return res.send("error : ", error.message);
+    return res.send(error.message);
   }
 };
 
