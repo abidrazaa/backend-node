@@ -49,7 +49,7 @@ module.exports.login = async (req, res) => {
 
 module.exports.register = async (req, res) => {
   try {
-    const { email, password, name } = req.body;
+    const { email, password, name, userType } = req.body;
 
     if (!email || !password) {
       return res.json({
@@ -74,6 +74,7 @@ module.exports.register = async (req, res) => {
 
 module.exports.updateUser = async (req, res) => {
   try {
+
     const userDataToBeUpdated = req.body;
     const { id } = req.query;
     const user = await userModel.findOne({ _id: id });
@@ -100,13 +101,11 @@ module.exports.deleteUser = async (req, res) => {
   try {
     const { id } = req.query;
 
-    console.log("id ==> ", id);
-
     const user = await userModel.findOne({ _id: id });
     if (!user) return res.status(200).send("user does not exist");
 
     await userModel.findOneAndDelete({ _id: id });
-
+    
     return res.json({
       success: true,
       message: "user deleted successfully",
@@ -164,7 +163,7 @@ module.exports.resetPassword = async (req, res) => {
         })
 
     }catch(error){
-        return res.send("error : ", error.message)
+        return res.send(error.message)
     }
     
 }
