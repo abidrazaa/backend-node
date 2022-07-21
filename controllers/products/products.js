@@ -17,6 +17,32 @@ module.exports.addProduct = async (req, res) => {
         })
 
     }catch(error){
-
+        return res.send(error.message)
     }
 }
+
+module.exports.getProducts = async (req, res) => {
+    try{
+
+        // pagination
+
+        // var {page, skip} = req.query;
+        // if(!page) page = 1
+        // if(!skip) skip = 0
+
+        const products = await productModel.find();
+        const productsCount = await productModel.find().count();
+
+        return res.json({
+            success : true,
+            status : 400,
+            message : "list of all products",
+            products,
+            count : productsCount
+        })
+
+    }catch(error){
+        return res.send(error.message)
+    }
+}
+
