@@ -79,4 +79,25 @@ module.exports.updateProduct = async (req, res) => {
     }
 }
 
+module.exports.deleteProduct = async (req, res) => {
+    try{
+
+        const {id} = req.query;
+        const product = await productModel.findOneAndDelete({_id : id})
+        if(!product){
+            return res.json({
+                success : false,
+                message : "product does not exist",
+            })
+        }
+        return res.json({
+            success : true,
+            message : "product deleted successfully",
+        })
+
+    }catch(error){
+        return res.send(error.message)
+    } 
+}
+
 

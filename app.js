@@ -11,7 +11,7 @@ app.use(express.json())
 dotenv.config();
 
 const { register, login, updateUser, deleteUser, userById, resetPassword } = require("./controllers/auth/auth");
-const {addProduct, updateProduct} = require("./controllers/products/products")
+const {addProduct, updateProduct, deleteProduct} = require("./controllers/products/products")
 const {isAdmin} = require("./controllers/middlewares/auth")
 const mongoose = require("./config/database")()
 
@@ -33,6 +33,7 @@ app.post("/reset-password", resetPassword)
 
 app.post("/product", [isAdmin], addProduct)
 app.post("/update-product", [isAdmin], updateProduct)
+app.get("/delete-product", [isAdmin], deleteProduct)
 
 app.listen((process.env.PORT || 8081), () => {
   console.log(`Example app listening on port ${process.env.PORT}!`)
