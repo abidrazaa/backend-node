@@ -46,3 +46,37 @@ module.exports.getProducts = async (req, res) => {
     }
 }
 
+
+module.exports.updateProduct = async (req, res) => {
+    try{
+
+        const {title, sku, price, image} = req.body;
+        const {id} = req.query;
+
+        const product = await productModel.findOne({_id : id})
+
+        if(product){
+            const updatedProduct = await productModel.findOneAndUpdate({_id : id}, req.body, {new :true})
+
+            return res.json({
+                success : true,
+                status : 200,  
+                message : "product updated successfully",
+                data : updatedProduct
+            })
+        }else{
+            
+            return res.json({
+                success : false,
+                status : 400,
+                message : "product does not exist"
+            })
+
+        }
+
+    }catch(error){
+        return res.send(error.message)
+    }
+}
+
+
