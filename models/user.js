@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
     email : {type : String, required : true, unique : true},
     userType : String,
     password : String,
-    token : String
+    token : String,
+    cart : [{productId : {type: mongoose.Schema.Types.ObjectId, ref : "product"}, quantity : Number}]
 
 },{timestamps: true})
 
