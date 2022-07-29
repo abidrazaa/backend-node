@@ -4,16 +4,37 @@ const port = process.env.PORT;
 var bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
+var path = require('path');
+var cors = require('cors')
+
+// To access public folder
+app.use(cors())
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json())
+
 // Set up Global configuration access
 dotenv.config();
+
+// MULTER
+const multer  = require('multer')
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    let uploadFile = file.originalname.split('.')
+    let name = `${uploadFile[0]}-${Date.now()}.${uploadFile[uploadFile.length-1]}`
+    cb(null, name)
+  }
+})
+const upload = multer({ storage: storage })
 
 const { register, login, updateUser, deleteUser, userById, resetPassword } = require("./controllers/auth/auth");
 const {addProduct, updateProduct, deleteProduct, getAllProducts} = require("./controllers/products/products")
 const {checkout, addToCart, cart, removeFromCart} = require("./controllers/user/cart")
-const {isAdmin, checkAuth} = require("./controllers/middlewares/auth")
+const {isAdmin, checkAuth} = require("./controllers/middlewares/auth");
 const mongoose = require("./config/database")()
 
 app.get('/', (req, res) => {
@@ -42,7 +63,24 @@ app.post("/add-to-cart",[checkAuth],addToCart)
 app.get("/cart",[checkAuth],cart)
 app.get("/remove-from-cart",[checkAuth],removeFromCart)
 
+// HELPER
+app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
+  // req.files is array of `photos` files
 
+  try{
+    let files = req.files;
+    if(!files.length){
+      return res.status(400).json({ err:'Please upload an image', msg:'Please upload an image' })
+    }
+    let file = req.files[0]
+    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+        return res.send(file.filename) 
+    }
+  }catch(errror){
+    return res.send(error.message)
+  }
+  
+})
 
 app.listen((process.env.PORT || 8081), () => {
   console.log(`Example app listening on port ${process.env.PORT}!`)
