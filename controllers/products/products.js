@@ -100,4 +100,24 @@ module.exports.deleteProduct = async (req, res) => {
     } 
 }
 
+module.exports.getAllProducts = async (req, res) => {
+    try{
+
+        const products = await productModel.find()
+
+        return res.json({
+            success : true,
+            status : 200,
+            message : "list of products",
+            data : products
+        })
+
+    }catch(error){
+        return res.json({
+            success : false,
+            status : 400,
+            message : error.message
+        })
+    }
+}
 

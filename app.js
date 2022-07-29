@@ -11,7 +11,7 @@ app.use(express.json())
 dotenv.config();
 
 const { register, login, updateUser, deleteUser, userById, resetPassword } = require("./controllers/auth/auth");
-const {addProduct, updateProduct, deleteProduct} = require("./controllers/products/products")
+const {addProduct, updateProduct, deleteProduct, getAllProducts} = require("./controllers/products/products")
 const {checkout, addToCart, cart, removeFromCart} = require("./controllers/user/cart")
 const {isAdmin, checkAuth} = require("./controllers/middlewares/auth")
 const mongoose = require("./config/database")()
@@ -32,6 +32,7 @@ app.post("/reset-password", resetPassword)
 
 // Products
 app.post("/product", [isAdmin], addProduct)
+app.get("/products", getAllProducts)
 app.post("/update-product", [isAdmin], updateProduct)
 app.get("/delete-product", [isAdmin], deleteProduct)
 

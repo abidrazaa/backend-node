@@ -17,7 +17,7 @@ module.exports.login = async (req, res) => {
     if (!user) {
       return res.json({
         success: true,
-        status: 0,
+        status: 400,
         message: "user does not exist with this email and password",
       });
     }
@@ -31,14 +31,14 @@ module.exports.login = async (req, res) => {
 
       return res.json({
         success: true,
-        status: 1,
+        status: 200,
         message: "user Logged in",
         data: user,
       });
     }
     return res.json({
         success: false,
-        status: 1,
+        status: 400,
         message: "user credentials are not correct",
     })
 
