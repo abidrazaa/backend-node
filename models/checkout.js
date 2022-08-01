@@ -6,6 +6,7 @@ const checkoutSchema = mongoose.Schema({
     items : [{productId : {type: mongoose.Schema.Types.ObjectId, ref : "product"}, quantity : Number, price : Number}],
     amount : Number,
     discount : Number,
+    shippingAddress : String,
     payment_type : {type : String, enum: ["cod","online"]}
 
 }, { timestamps : true })
