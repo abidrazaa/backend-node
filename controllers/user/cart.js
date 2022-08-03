@@ -9,6 +9,8 @@ module.exports.checkout = async (req, res) => {
         const user = req.user
 
         body.user = user?._id
+
+        // if cart is not empty and items array contains objects
         if(body?.items.length){
             let checkout = new orderModel(body)
             checkout.save()

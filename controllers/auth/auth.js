@@ -51,6 +51,7 @@ module.exports.register = async (req, res) => {
   try {
     const { email, password, name, userType } = req.body;
 
+    // if any one of the field from email and password is not filled
     if (!email || !password) {
       return res.json({
         success: false,
@@ -138,9 +139,6 @@ module.exports.resetPassword = async (req, res) => {
     try{
         const {password, newPassword} = req.body;
         const {id} = req.query
-
-        console.log(req.body)
-        console.log(req.query)
     
         if(!password || !newPassword || !id) return res.send("Fields are empty")
     
@@ -148,7 +146,9 @@ module.exports.resetPassword = async (req, res) => {
     
         if(!user) return res.send("user does not exist")
     
+        // comparing the password from the password in DB to allow changes
         if(bcrypt.compare(password, user?.password)){
+            // encrypting new password 
             user.password = await bcrypt.hash(newPassword,10)
             user.save()
             return res.json({

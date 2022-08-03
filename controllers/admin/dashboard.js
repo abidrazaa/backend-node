@@ -6,6 +6,7 @@ module.exports.dashboardData = async (req, res) => {
 
     try{
 
+        // counts 
         const ordersCount = await orderModel.find().count()
         const usersCount = await userModel.find().count()
         const productsCount = await productModel.find().count()

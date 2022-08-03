@@ -2,7 +2,6 @@ var multer = require('multer')
 
 module.exports = () => {
 
-    // console.log("Dsffads")
     let upload = {
         destination: function (req, file, cb) {
           cb(null, 'public/storage')

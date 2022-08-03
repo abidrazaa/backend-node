@@ -6,34 +6,31 @@ const userModel = require("../../models/user")
 module.exports.isAdmin = async (req, res, next) => {
 
     const {email} = req.body;
+    // receiving token from the header
     let token = req.headers["x-auth-token"] || req.body.token || req.query.token;
 
     if(token){
+        // decode token with TOKEN key to extract the user
         const decoded = jwt.verify(token,TOKEN_KEY)
+
+        // saving the current user in req.user
         req.user = decoded
 
+        // checking if the logged in user is ADMIN or not
         const user = await userModel.findOne({_id : decoded?._id, userType : "ADMIN"})
             .select("-password")
 
         if(!user){
+            // if not admin
             return res.send("Insufficient User Permissions")
         }
+
+        // if admin, pass to the next function call
         return next()
     }
     else{
         return res.status(400).json({ msg: "No Auth Token Found", err: "No Auth Token Found" });
     }
-
-
-    // console.log("email ==> ", email)
-    // const isAdmin = await userModel.findOne({email, userType : "ADMIN"})
-
-    // if(isAdmin){
-    //     return next();
-    // }else{
-    //     return res.status(401).json({ msg: "Insufficient User Permissions", err:"Insufficient User Permissions" });
-    // }
-
 }
 
 
