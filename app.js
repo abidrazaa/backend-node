@@ -35,6 +35,7 @@ const { register, login, updateUser, deleteUser, userById, resetPassword } = req
 const {addProduct, updateProduct, deleteProduct, getAllProducts} = require("./controllers/products/products")
 const {checkout, addToCart, cart, removeFromCart} = require("./controllers/user/cart")
 const {isAdmin, checkAuth} = require("./controllers/middlewares/auth");
+const { dashboardData } = require('./controllers/admin/dashboard');
 const mongoose = require("./config/database")()
 
 app.get('/', (req, res) => {
@@ -62,6 +63,10 @@ app.post("/checkout",[checkAuth],checkout)
 app.post("/add-to-cart",[checkAuth],addToCart)
 app.get("/cart",[checkAuth],cart)
 app.get("/remove-from-cart",[checkAuth],removeFromCart)
+
+
+// ADMIN
+app.get("/dashboard",[isAdmin],dashboardData)
 
 // HELPER
 app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {

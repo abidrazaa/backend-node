@@ -1,4 +1,4 @@
-const checkoutModel = require("../../models/checkout")
+const orderModel = require("../../models/order")
 const userModel = require("../../models/user")
 const {ObjectId} = require('mongodb');
 
@@ -6,12 +6,11 @@ module.exports.checkout = async (req, res) => {
     try{
         
         var body = req.body;
-
         const user = req.user
 
         body.user = user?._id
         if(body?.items.length){
-            let checkout = new checkoutModel(body)
+            let checkout = new orderModel(body)
             checkout.save()
             return res.json({
                 success: true,
