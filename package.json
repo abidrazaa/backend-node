@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/abidrazaa/backend-node#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "bson": "^4.6.5",
     "cors": "^2.8.5",
@@ -29,5 +29,8 @@
     "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.19",
     "path": "^0.12.7"
+  },
+  "engines": {
+    "node": "16.16.0"
   }
 }
