@@ -4,7 +4,6 @@ module.exports.orders = async (req, res) => {
     try{
 
         const user = req.user
-
         const orders = await ordersModel.find({user : user._id})
 
         return res.json({

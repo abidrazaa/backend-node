@@ -44,6 +44,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 });
 
+app.get('/MaheenAbid', (req, res) => {
+  res.send('I love you Maheen meri jaaan!')
+});
 // AUTH
 app.post('/register', register);
 app.post("/login", login)
