@@ -37,6 +37,7 @@ const {checkout, addToCart, cart, removeFromCart} = require("./controllers/user/
 const {isAdmin, checkAuth} = require("./controllers/middlewares/auth");
 const { dashboardData } = require('./controllers/admin/dashboard');
 const { getAllOrders, changeStatusOfOrder } = require('./controllers/admin/orders');
+const { orders } = require('./controllers/user/orders');
 const mongoose = require("./config/database")()
 
 app.get('/', (req, res) => {
@@ -58,6 +59,9 @@ app.post("/product", [isAdmin], addProduct)
 app.get("/products", getAllProducts)
 app.post("/update-product", [isAdmin], updateProduct)
 app.get("/delete-product", [isAdmin], deleteProduct)
+
+// ORDERS
+app.get("/orders",[checkAuth],orders)
 
 // CART
 app.post("/checkout",[checkAuth],checkout)
@@ -93,3 +97,4 @@ app.post('/photos/upload', upload.array('photos', 12), function (req, res, next)
 app.listen((process.env.PORT || 8081), () => {
   console.log(`Example app listening on port ${process.env.PORT}!`)
 });
+
