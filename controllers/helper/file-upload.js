@@ -4,7 +4,7 @@ module.exports = () => {
 
     let upload = {
         destination: function (req, file, cb) {
-          cb(null, 'public/storage')
+          cb(null, './public/storage')
         },
         filename: function (req, file, cb) {
           let uploadFile = file.originalname.split('.')

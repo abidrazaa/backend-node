@@ -86,7 +86,7 @@ app.post('/photos/upload', upload.array('photos', 12), function (req, res, next)
     }
     let file = req.files[0]
     if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-        return res.send(file.filename) 
+        return res.json({"image" : file.filename}) 
     }
   }catch(errror){
     return res.send(error.message)
