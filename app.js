@@ -54,7 +54,6 @@ app.get("/user", userById)
 app.get("/delete-user", deleteUser)
 app.post("/reset-password", resetPassword)
 
-
 // Products
 app.post("/product", [isAdmin], addProduct)
 app.get("/products", getAllProducts)
