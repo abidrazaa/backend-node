@@ -100,7 +100,11 @@ module.exports.deleteProduct = async (req, res) => {
 module.exports.getAllProducts = async (req, res) => {
     try{
 
-        const products = await productModel.find()
+        // Search through title names
+        var {search} = req.query
+        if(!search) search = ""
+
+        const products = await productModel.find({title:{'$regex' : search, '$options' : 'i'}})
 
         return res.json({
             success : true,

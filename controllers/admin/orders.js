@@ -7,6 +7,27 @@ module.exports.getAllOrders = async (req, res) => {
             .populate({path : "user" , select : "-password -token"})
             .populate("items.productId")
 
+        // const orders = await ordersModel.aggregate([
+        //     {
+        //         $lookup : {
+        //             from : "users",
+        //             localField : "user",
+        //             foreignField : "_id",
+        //             as : "user"
+        //         }
+        //     },
+        //     { $unwind: "$items" },
+        //     {
+        //         $lookup : {
+        //             from : "products",
+        //             localField : "items.productId",
+        //             foreignField : "_id",
+        //             as : "items.productId"
+        //         }
+        //     }
+        // ])
+
+
         const ordersCount = await ordersModel.find().count()
 
         return res.json({
@@ -21,7 +42,6 @@ module.exports.getAllOrders = async (req, res) => {
 
         return res.send(error.message)
     }
-
 }
 
 module.exports.changeStatusOfOrder = async (req, res) => {
