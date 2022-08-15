@@ -13,7 +13,7 @@ module.exports.addCategory = async (req, res) => {
         return res.json({
             success : true,
             message : "category inserted successfully",
-            data : categories
+            data : category
         })
 
     }catch(error){

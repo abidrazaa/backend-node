@@ -61,6 +61,7 @@ app.get("/products", getAllProducts)
 app.post("/update-product", [isAdmin], updateProduct)
 app.get("/delete-product", [isAdmin], deleteProduct)
 
+
 // CATEGORIES
 app.post("/category", [isAdmin], addCategory)
 app.get("/categories", getCategories)
@@ -70,6 +71,7 @@ app.get("/delete-category", [isAdmin], deleteCategory)
 
 // ORDERS
 app.get("/orders",[checkAuth],orders)
+
 
 // CART
 app.post("/checkout",[checkAuth],checkout)
