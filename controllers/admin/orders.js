@@ -7,27 +7,6 @@ module.exports.getAllOrders = async (req, res) => {
             .populate({path : "user" , select : "-password -token"})
             .populate("items.productId")
 
-        // const orders = await ordersModel.aggregate([
-        //     {
-        //         $lookup : {
-        //             from : "users",
-        //             localField : "user",
-        //             foreignField : "_id",
-        //             as : "user"
-        //         }
-        //     },
-        //     { $unwind: "$items" },
-        //     {
-        //         $lookup : {
-        //             from : "products",
-        //             localField : "items.productId",
-        //             foreignField : "_id",
-        //             as : "items.productId"
-        //         }
-        //     }
-        // ])
-
-
         const ordersCount = await ordersModel.find().count()
 
         return res.json({
@@ -42,6 +21,18 @@ module.exports.getAllOrders = async (req, res) => {
 
         return res.send(error.message)
     }
+}
+
+module.exports.getCurrentDate = async () => {
+
+    var today = new Date();
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = months[today.getMonth()];
+    let year = today.getFullYear();
+    today = month + " " + day + ', ' + year;
+    return today
+
 }
 
 module.exports.changeStatusOfOrder = async (req, res) => {
@@ -62,7 +53,18 @@ module.exports.changeStatusOfOrder = async (req, res) => {
             })
         }
 
-        const statusUpdate = await ordersModel.findOneAndUpdate({_id : orderId},{status : status}, {new : true})
+        var today = await this.getCurrentDate()
+        
+        var statusUpdate;
+        if(status == "shipped"){
+            statusUpdate = await ordersModel.findOneAndUpdate({_id : orderId},{status : status, shippedOn : today}, {new : true})
+        }
+        else if(status == "delivered"){
+            statusUpdate = await ordersModel.findOneAndUpdate({_id : orderId},{status : status, deliveredOn : today}, {new : true})
+        }
+        else{
+            statusUpdate = await ordersModel.findOneAndUpdate({_id : orderId},{status : status}, {new : true})
+        }
 
         return res.json({
             success : true,

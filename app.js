@@ -35,7 +35,7 @@ const { register, login, updateUser, deleteUser, userById, resetPassword } = req
 const {addProduct, updateProduct, deleteProduct, getAllProducts} = require("./controllers/products/products")
 const {checkout, addToCart, cart, removeFromCart} = require("./controllers/user/cart")
 const {isAdmin, checkAuth} = require("./controllers/middlewares/auth");
-const { dashboardData } = require('./controllers/admin/dashboard');
+const { dashboardData, getAllUsers } = require('./controllers/admin/dashboard');
 const { getAllOrders, changeStatusOfOrder } = require('./controllers/admin/orders');
 const { orders } = require('./controllers/user/orders');
 const { addCategory, getCategories, updateCategory, deleteCategory } = require('./controllers/categories/category');
@@ -46,15 +46,18 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 });
 
+
 // AUTH
 app.post('/register', register);
 app.post("/login", login)
+
 
 // User Routes
 app.post("/update-user", updateUser)
 app.get("/user", userById)
 app.get("/delete-user", deleteUser)
 app.post("/reset-password", resetPassword)
+
 
 // Products
 app.post("/product", [isAdmin], addProduct)
@@ -78,7 +81,6 @@ app.get("/orders",[checkAuth],orders)
 app.post("/checkout",[checkAuth],checkout)
 
 
-
 // WISHLIST
 app.post("/add-to-wishlist",[checkAuth],addToWishlist)
 app.get("/wishlist",[checkAuth],wishlist)
@@ -89,6 +91,8 @@ app.get("/remove-from-wishlist",[checkAuth],removeFromWishlist)
 app.get("/dashboard",[isAdmin],dashboardData)
 app.get("/admin/orders",[isAdmin],getAllOrders)
 app.get("/admin/order-status",[isAdmin],changeStatusOfOrder)
+app.get("/admin/users",[isAdmin],getAllUsers)
+
 
 // HELPER
 app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
