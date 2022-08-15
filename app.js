@@ -38,6 +38,7 @@ const {isAdmin, checkAuth} = require("./controllers/middlewares/auth");
 const { dashboardData } = require('./controllers/admin/dashboard');
 const { getAllOrders, changeStatusOfOrder } = require('./controllers/admin/orders');
 const { orders } = require('./controllers/user/orders');
+const { addCategory, getCategories, updateCategory, deleteCategory } = require('./controllers/categories/category');
 const mongoose = require("./config/database")()
 
 app.get('/', (req, res) => {
@@ -59,6 +60,13 @@ app.post("/product", [isAdmin], addProduct)
 app.get("/products", getAllProducts)
 app.post("/update-product", [isAdmin], updateProduct)
 app.get("/delete-product", [isAdmin], deleteProduct)
+
+// CATEGORIES
+app.post("/category", [isAdmin], addCategory)
+app.get("/categories", getCategories)
+app.post("/update-category", [isAdmin], updateCategory)
+app.get("/delete-category", [isAdmin], deleteCategory)
+
 
 // ORDERS
 app.get("/orders",[checkAuth],orders)
