@@ -39,6 +39,7 @@ const { dashboardData } = require('./controllers/admin/dashboard');
 const { getAllOrders, changeStatusOfOrder } = require('./controllers/admin/orders');
 const { orders } = require('./controllers/user/orders');
 const { addCategory, getCategories, updateCategory, deleteCategory } = require('./controllers/categories/category');
+const { addToWishlist, wishlist, removeFromWishlist } = require('./controllers/user/wishlist');
 const mongoose = require("./config/database")()
 
 app.get('/', (req, res) => {
@@ -73,11 +74,15 @@ app.get("/delete-category", [isAdmin], deleteCategory)
 app.get("/orders",[checkAuth],orders)
 
 
-// CART
+// CHECKOUT
 app.post("/checkout",[checkAuth],checkout)
-app.post("/add-to-cart",[checkAuth],addToCart)
-app.get("/cart",[checkAuth],cart)
-app.get("/remove-from-cart",[checkAuth],removeFromCart)
+
+
+
+// WISHLIST
+app.post("/add-to-wishlist",[checkAuth],addToWishlist)
+app.get("/wishlist",[checkAuth],wishlist)
+app.get("/remove-from-wishlist",[checkAuth],removeFromWishlist)
 
 
 // ADMIN
