@@ -32,15 +32,16 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 const { register, login, updateUser, deleteUser, userById, resetPassword } = require("./controllers/auth/auth");
-const {addProduct, updateProduct, deleteProduct, getAllProducts} = require("./controllers/products/products")
-const {checkout, addToCart, cart, removeFromCart} = require("./controllers/user/cart")
-const {isAdmin, checkAuth} = require("./controllers/middlewares/auth");
+const { addProduct, updateProduct, deleteProduct, getAllProducts } = require("./controllers/products/products")
+const { checkout, addToCart, cart, removeFromCart } = require("./controllers/user/cart")
+const { isAdmin, checkAuth } = require("./controllers/middlewares/auth");
 const { dashboardData, getAllUsers } = require('./controllers/admin/dashboard');
 const { getAllOrders, changeStatusOfOrder } = require('./controllers/admin/orders');
 const { orders } = require('./controllers/user/orders');
 const { addCategory, getCategories, updateCategory, deleteCategory } = require('./controllers/categories/category');
 const { addToWishlist, wishlist, removeFromWishlist } = require('./controllers/user/wishlist');
 const mongoose = require("./config/database")()
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -76,16 +77,13 @@ app.get("/delete-category", [isAdmin], deleteCategory)
 // ORDERS
 app.get("/orders",[checkAuth],orders)
 
-
 // CHECKOUT
 app.post("/checkout",[checkAuth],checkout)
-
 
 // WISHLIST
 app.post("/add-to-wishlist",[checkAuth],addToWishlist)
 app.get("/wishlist",[checkAuth],wishlist)
 app.get("/remove-from-wishlist",[checkAuth],removeFromWishlist)
-
 
 // ADMIN
 app.get("/dashboard",[isAdmin],dashboardData)
@@ -93,9 +91,8 @@ app.get("/admin/orders",[isAdmin],getAllOrders)
 app.get("/admin/order-status",[isAdmin],changeStatusOfOrder)
 app.get("/admin/users",[isAdmin],getAllUsers)
 
-
 // HELPER
-app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {
+app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {  
   // req.files is array of `photos` files
 
   try{
@@ -107,13 +104,12 @@ app.post('/photos/upload', upload.array('photos', 12), function (req, res, next)
     if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
         return res.json({"image" : file.filename}) 
     }
-  }catch(errror){
+  }
+  catch(error){
     return res.send(error.message)
   }
-  
 })
 
 app.listen((process.env.PORT || 8081), () => {
   console.log(`Example app listening on port ${process.env.PORT}!`)
 });
-

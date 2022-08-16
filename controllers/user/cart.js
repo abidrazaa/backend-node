@@ -10,6 +10,8 @@ module.exports.checkout = async (req, res) => {
 
         body.user = user?._id
 
+        body.orderId = (Math.floor(Math.random() * 1000000000)).toString();
+
         // if cart is not empty and items array contains objects
         if(body?.items.length){
             let checkout = new orderModel(body)

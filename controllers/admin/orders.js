@@ -6,6 +6,7 @@ module.exports.getAllOrders = async (req, res) => {
         const orders = await ordersModel.find()
             .populate({path : "user" , select : "-password -token"})
             .populate("items.productId")
+            .populate("items.categoryId")
 
         const ordersCount = await ordersModel.find().count()
 
