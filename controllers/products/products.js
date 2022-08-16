@@ -105,6 +105,7 @@ module.exports.getAllProducts = async (req, res) => {
         if(!search) search = ""
 
         const products = await productModel.find({title:{'$regex' : search, '$options' : 'i'}})
+            .populate("category")
 
         return res.json({
             success : true,
