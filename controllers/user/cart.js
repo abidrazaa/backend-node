@@ -1,5 +1,6 @@
 const orderModel = require("../../models/order")
 const userModel = require("../../models/user")
+const productModel = require("../../models/product")
 const {ObjectId} = require('mongodb');
 
 module.exports.checkout = async (req, res) => {
@@ -9,13 +10,28 @@ module.exports.checkout = async (req, res) => {
         const user = req.user
 
         body.user = user?._id
-
         body.orderId = (Math.floor(Math.random() * 1000000000)).toString();
 
         // if cart is not empty and items array contains objects
         if(body?.items.length){
             let checkout = new orderModel(body)
             checkout.save()
+
+            let items = body?.items 
+
+            items.forEach(async item => {
+
+                const updatedQuantity = await productModel.findOneAndUpdate(
+                    { _id: item.productId },
+                    [{
+                        $set: {
+                            quantity: {
+                                $subtract: ["$quantity", item.quantity]
+                            },
+                        }
+                    }],
+                )
+            });
             return res.json({
                 success: true,
                 message : "successful checkout",
