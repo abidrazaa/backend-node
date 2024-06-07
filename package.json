@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "type-check": "tsc",
+    "start": "tsx watch src/app",
+    "format": "prettier --write ./src",
+    "lint": "eslint --fix --cache ./src",
+    "build": "esbuild src/app.ts --bundle --packages=external --platform=node --format=esm --outdir=dist --sourcemap"
   },
   "repository": {
     "type": "git",
@@ -19,18 +23,35 @@
   "homepage": "https://github.com/abidrazaa/backend-node#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.0",
-    "bson": "^4.6.5",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.1",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^2.0.19",
-    "path": "^0.12.7"
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^4.17.21",
+    "@types/json-server": "^0.14.7",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^20.14.2",
+    "esbuild": "^0.21.4",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.1",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.12.0"
   },
   "engines": {
-    "node": "16.16.0"
+    "node": ">20.0.0"
   }
 }

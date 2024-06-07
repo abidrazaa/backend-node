@@ -1,0 +1,44 @@
+# services required in this container
+services:
+  # main express app
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: be-express-app
+    # port to forward
+    ports:
+      - '3000:3000'
+    # volumne to mount
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./logs:/app/logs
+    # before starting start the mongo service
+    depends_on:
+      - mongo
+    networks:
+      - be-network
+
+  mongo-express:
+    container_name: be-mongo-express
+    image: mongo-express
+    ports:
+      - '8083:8081'
+    depends_on:
+      - mongo
+    networks:
+      - be-network
+
+  mongo:
+    container_name: be-mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '27012:27017'
+    networks:
+      - be-network
+
+networks:
+  be-network:

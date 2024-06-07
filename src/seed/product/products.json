@@ -1,0 +1,147 @@
+[
+  {
+    "title": "Apple iPhone 15",
+    "description": "Experience the iPhone 15 - your dynamic companion. Dynamic Island ensures you stay connected, bubbling up alerts seamlessly while you're busy. Its durable design features infused glass and aerospace-grade aluminum, making it dependable and resistant to water and dust. Capture life with precision using the 48 MP Main Camera, perfect for any shot. Powered by the A16 Bionic Processor, it excels in computational photography and more, all while conserving battery life. Plus, it's USB-C compatible, simplifying your charging needs. Elevate your tech game with the iPhone 15 – innovation at your fingertips. Goodbye cable clutter, hello convenience.",
+    "image": "/images/iphone-15.jpeg",
+    "sku": "29700154",
+    "price": 70999,
+    "category": "Mobile",
+    "quantity": 20
+  },
+  {
+    "title": "Google Pixel 8",
+    "description": "Stay productive throughout the day with this Pixel 8 smartphone that brings to you a multitude of impressive and useful features. Built over a powerful chip-set and custom-designed with Google AI for splendid photo and video features, this smartphone is a game changer. With a 6.2-inch high-resolution display, this phone displays sharp and clear content. Audio Magic Eraser uses Google AI to reduce distracting sounds. The phone is designed with safety features to quickly help you respond during emergency situations. With IP68 protection, the phone can handle dust and spills efficiently. Turning on the Extreme Battery Saver mode can help run your phone's battery up to 72 hours.",
+    "image": "/images/pixel-8.webp",
+    "sku": "66293066",
+    "price": 72999,
+    "category": "Mobile",
+    "quantity": 20
+  },
+  {
+    "title": "SAMSUNG Galaxy S24 Ultra",
+    "description": "Behold the Samsung Galaxy S24 Ultra smartphone, an exceptional amalgamation of incredible technology and superior sophistication. Whether you're typing up a storm or jotting something down, Note Assist makes a long story short. New AI-powered editing options let you get the photo you want, like relocating objects and intelligently filling in the space they left behind. With a durable shield of titanium built right into the frame and better scratch resistance with Corning Gorilla Armor, your IP68 water and dust-resistant Galaxy S24 Ultra is ready for adventure. Write, tap, and navigate with the precision your fingers wish they had on the new, flat display.",
+    "image": "/images/samsung-s24.webp",
+    "sku": "15739079",
+    "price": 129999,
+    "category": "Mobile",
+    "quantity": 10
+  },
+  {
+    "title": "OnePlus 12",
+    "description": "OnePlus 12 redefines the meaning of smooth. Seamlessly blending flagship hardware with state-of-the-art software optimizations, OnePlus 12 is Smooth Beyond Belief.",
+    "image": "/images/oneplus-12.webp",
+    "sku": "79877603",
+    "price": 129999,
+    "category": "Mobile",
+    "quantity": 10
+  },
+  {
+    "title": "LG AI Convertible 6-in-1",
+    "description": "Combining powerful performance with user-friendly operation, the LG RS-Q14GWZE 1 ton Split Air Conditioner is an exceptional addition to your space. It uses sophisticated AI+ technology and a sensing system to understand your environment, lifestyle, and usage habits and adapt the cooling system as required. In this manner, it can provide you with optimal comfort and convenience for a long time. Moreover, this air conditioner gives you the choice to increase or decrease cooling capacity as needed with its AI+ convertible six-in-one cooling.",
+    "image": "/images/lg-ai-ac.webp",
+    "sku": "35501588",
+    "price": 39999,
+    "category": "Appliances",
+    "quantity": 10
+  },
+  {
+    "title": "Haier 10.5 Washer with Dryer",
+    "description": "Utilizing innovative industry first dual-cyclone control technology by Haier, condensate is directed to flush the fluff stick on the condensing air duct, effectively achieving automatic fluff filtration.",
+    "image": "/images/haier-washer.webp",
+    "sku": "74511589",
+    "price": 54999,
+    "category": "Appliances",
+    "quantity": 10
+  },
+  {
+    "title": "SONY Bravia X75L 55 inch Ultra HD (4K)",
+    "description": "You can enjoy the brilliant colors and explore new worlds in 4K resolution on this Sony Google TV. The powerful X1 4K processor brings every color to life so that you can enjoy your favorite content. With the help of Google Assistant, searching for your desired content is made easy on this Sony TV. The Motionflow XR gives you sharp and detailed visuals so that you can experience blur-free and cinematic visuals on the screen. Dolby Audio delivers immersive audio allowing you to indulge in your favorite movies.",
+    "image": "/images/sony-bravia.webp",
+    "sku": "5224227",
+    "price": 60999,
+    "category": "Appliances",
+    "quantity": 10
+  },
+  {
+    "title": "Godrej Double Door Refrigerator",
+    "description": "You can preserve the freshness of your food and beverages for long periods with the Godrej RF EON 244B RI ST GL 223 L Frost-free Double-door Refrigerator. It is equipped with Nano Shield technology, which effectively disinfect food surfaces for optimal cleanliness. In addition, this refrigerator utilizes Cool Balance technology, which employs a sophisticated airflow system to ensure precise and optimal cooling throughout the entire unit. Moreover, boasting both Cool Balance and Moisture Control technologies, this refrigerator can keep your fruits and vegetables fresh for up to 30 days.",
+    "image": "/images/godrej-fridge.webp",
+    "sku": "59723272",
+    "price": 19999,
+    "category": "Appliances",
+    "quantity": 10
+  },
+  {
+    "title": "NIVIA Shining Star Football",
+    "description": "The Nivia Shining Star is International Match ball Designed for Professionals. The top-quality construction makes this Nivia Football ideal for professionals. Abrasion Resistant : Made from 32 panels, the outer synthetic rubber material is abrasion resistant and feels smooth. 32 Panels : The outer cover is constructed from 32 panels that give the perfect round shape and reduce seam-stress. Hand Stitched : All the panels are stitched together by hand using heavy gauge thread that has been waxed and pre-stretched for superior durability. Rubber Outer Material : The outer material is made from synthetic material for a soft touch and high abrasion resistance.",
+    "image": "/images/nivia-football.webp",
+    "sku": "9426637",
+    "price": 999,
+    "category": "Sports",
+    "quantity": 50
+  },
+  {
+    "title": "YONEX Badminton Racquet ",
+    "description": "Yonex Badminton Racquets are best known for being lightweight, thinner, stronger & more stability. This series of badminton racquets offer extreme power & speed.",
+    "image": "/images/yonex-racquet.webp",
+    "sku": "29820583",
+    "price": 899,
+    "category": "Sports",
+    "quantity": 30
+  },
+  {
+    "title": "Willow Master Cricket Bat",
+    "description": "Most economical ENGLISH Willow bat Traditionally shaped and styled for maximum stability while playing shots Fabric covered for extra durability The handle is made from premium, imported Saravak cane to deliver superior power and control The bat is covered in grain faced bat tape which gives it a smooth finish and a stylish look.",
+    "image": "/images/willow-bat.webp",
+    "sku": "25440173",
+    "price": 2599,
+    "category": "Sports",
+    "quantity": 50
+  },
+  {
+    "title": "NIVIA Pro-Touch Basketball",
+    "description": "Approved by Basketball Federation of India. Rigorously tested, this Pro-Touch Basketball has been approved by the BFI. Leather Construction, This Nivia Basketball is made from the finest composite leather that gives you a great dribble and bounce.Butyl Bladder, The butyl bladder has low levels or air leakage and helps to maintain a constant air pressure. High Air Retention, The butyl bladder helps retain air for longer so this Nivia Basketball retains its round shape.",
+    "image": "/images/nivia-basketball.webp",
+    "sku": "37095667",
+    "price": 2999,
+    "category": "Sports",
+    "quantity": 20
+  },
+  {
+    "title": "T-Shirt Men",
+    "description": "T-Shirt for men.",
+    "image": "/images/t-shirt-men.webp",
+    "sku": "40222377",
+    "price": 499,
+    "category": "Fashion",
+    "quantity": 100
+  },
+  {
+    "title": "T-Shirt Women",
+    "description": "T-Shirt for women.",
+    "image": "/images/t-shirt-women.webp",
+    "sku": "17024935",
+    "price": 599,
+    "category": "Fashion",
+    "quantity": 100
+  },
+
+  {
+    "title": "DOMS Q 30cm Ruler ",
+    "description": "DOMS 15 CM Ruler is Made up of Superior quality Plastic, Prevent breakage Transparent Ruler, Ensure accuracy in measurement and Perfection, Special MM marking for precision, Bold Marking that do not fade away.",
+    "image": "/images/doms-ruler.webp",
+    "sku": "83307882",
+    "price": 99,
+    "category": "Stationary",
+    "quantity": 200
+  },
+  {
+    "title": "Reynolds Lumino Gel Pen",
+    "description": "A gel pen with Japanese ink technology and advanced waterproof ink, the Reynolds Lumino Gel pens are a delight to look at and write with. The needle tip gives you precise writing and the refillable ink system ensures you never run out of ink.",
+    "image": "/images/gel-pen.webp",
+    "sku": "17024935",
+    "price": 299,
+    "category": "Stationary",
+    "quantity": 50
+  }
+]

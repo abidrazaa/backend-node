@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Fashion",
+    "image": "/images/fashion.png",
+    "icon": "/images/fashion.png",
+    "description": "Apparel for men and women"
+  },
+  {
+    "title": "Mobile",
+    "image": "/images/mobile.png",
+    "icon": "/images/mobile.png",
+    "description": "Mobile and accessories"
+  },
+  {
+    "title": "Appliances",
+    "image": "/images/appliances.png",
+    "icon": "/images/appliances.png",
+    "description": "Appliances and accessories"
+  },
+  {
+    "title": "Stationary",
+    "image": "/images/stationary.png",
+    "icon": "/images/stationary.png",
+    "description": "Stationary and household items"
+  },
+  {
+    "title": "Sports",
+    "image": "/images/sports.png",
+    "icon": "/images/sports.png",
+    "description": "Sports and accessories"
+  }
+]

@@ -1,2 +1,16 @@
-# node_modules
-# public/uploads
+node_modules
+#public/uploads
+.env
+.eslintcache
+.DS_Store
+
+# mongo
+.data
+data
+
+# logs
+logs
+
+# build
+build
+dist
